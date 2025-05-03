@@ -9,16 +9,17 @@ This repository is part of my larger 3-year mission to become a top 1% fullstack
 
 | 📁 Project Name | 🔗 Live Demo | 🛠️ Tech Stack | 📌 Status |📁 Folder Link |
 |----------------|--------------|----------------|------------|------------|
+| 💀 Assembly Endgame| [View](https://assembly-endgame-theta.vercel.app/)  | React, useState, CLSX | ✅ Completed | [`link`](./assembly-endgame) |
 | 📃 Text Utils | [View](https://front-end-projects-theta.vercel.app/) | React, JavaScript, LocalStorage, useState | ✅ Completed | [`link`](./text-utils) |
-| 💀 Assembly Endgame| [View](https://assembly-endgame-theta.vercel.app/)  | React, useState, CLSX | 🚧 In Progress |
-| 📏 Window Tracker | [View](https://react-playground-windowtracker.vercel.app/) | React, JavaScript | ✅ Completed |
-| 🎲 Tenzies Game | [View](https://react-playground-tenzies.vercel.app/) | React, CSS | ✅ Completed |
-| ☑️ Todo List | [Coming Soon]() | React, LocalStorage | 🧪 Testing |
-| ➕ Counter App | [Coming Soon]() | React, useState | 🧪 Testing |
-| 💬 Quote Generator | [Coming Soon]() | React, API | 🧪 Testing |
+| 🔑 Password generator | [`View`]() |  useState, useCallback, useEffect, useRef  | 🧪 Testing |[`link`](./password-generator) |
+| 📏 Window Tracker | [View]() | React, JavaScript, useEffect | ✅ Completed | [`link`](./window-width) |
+| 💬 Meme Generator | [`View`]() | React, API, Forms, Conditional | ✅ Completed | [`link`](./meme-generator) |
+| 🎲 Tenzies Game | [View]() | React, CSS, useState, useEffect, useRef | ✅ Completed | [`link`](./tenzies-game) |
+| ☑️ React-Static | [`View`]() | React, JavaScript, CSS, JSX | ✅ Completed | [`link`](./react-static) | 
 
 _(This table will grow daily as I push more mini-projects here.)_
-
+<!-- 🧪 Testing
+🚧 In Progress -->
 ---
 
 ## 🧠 Skills I'm Practicing
