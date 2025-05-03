@@ -1,10 +1,9 @@
-# ⚛️ React Playground
+## ⚛️ React Playground
 
 Welcome to my curated collection of **React mini-projects** — built to sharpen my skills and explore real-world concepts in React.  
-This repository is part of my larger 3-year mission to become a top 1% fullstack developer. Currently, I’m focused on the React ecosystem: building, experimenting, and deploying daily.
+This repository is part of my larger 3-year mission to become a top 1% fullstack developer.
 
 ---
-
 ## 🚀 Projects Showcase
 
 | 📁 Project Name | 🔗 Live Demo | 🛠️ Tech Stack | 📌 Status |📁 Folder Link |
@@ -14,7 +13,7 @@ This repository is part of my larger 3-year mission to become a top 1% fullstack
 | 🔑 Password generator | [`View`](https://password-generator-kappa-blond.vercel.app/) |  useState, useCallback, useEffect, useRef  | 🧪 Testing |[`link`](./password-generator) |
 | 📏 Window Tracker | [View](https://window-width.vercel.app/) | React, JavaScript, useEffect | ✅ Completed | [`link`](./window-width) |
 | 💬 Meme Generator | [`View`](https://meme-generator-smoky-phi.vercel.app/) | React, API, Forms, Conditional | ✅ Completed | [`link`](./meme-generator) |
-| 🎲 Tenzies Game | [View]() | React, CSS, useState, useEffect, useRef | ✅ Completed | [`link`](./tenzies-game) |
+| 🎲 Tenzies Game | [View](https://tenzies-game-steel.vercel.app/) | React, CSS, useState, useEffect, useRef | ✅ Completed | [`link`](./tenzies-game) |
 | ☑️ React-Static | [`View`](https://react-static-lovat.vercel.app/) | React, JavaScript, CSS, JSX | ✅ Completed | [`link`](./react-static) | 
 
 _(This table will grow daily as I push more mini-projects here.)_
