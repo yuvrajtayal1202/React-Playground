@@ -9,10 +9,10 @@ This repository is part of my larger 3-year mission to become a top 1% fullstack
 
 | 📁 Project Name | 🔗 Live Demo | 🛠️ Tech Stack | 📌 Status |📁 Folder Link |
 |----------------|--------------|----------------|------------|------------|
-| 🎲 Tenzies Game | [View](https://react-playground-tenzies.vercel.app/) | React, CSS | ✅ Completed |
-| 📏 Window Tracker | [View](https://react-playground-windowtracker.vercel.app/) | React, JavaScript | ✅ Completed |
 | 📃 Text Utils | [View](https://front-end-projects-theta.vercel.app/) | React, JavaScript, LocalStorage, useState | ✅ Completed |
-| ⏱️ Digital Clock | [Coming Soon]() | React, CSS | 🚧 In Progress |
+| 💀 Assembly Endgame| [View](https://assembly-endgame-theta.vercel.app/)  | React, useState, CLSX | 🚧 In Progress |
+| 📏 Window Tracker | [View](https://react-playground-windowtracker.vercel.app/) | React, JavaScript | ✅ Completed |
+| 🎲 Tenzies Game | [View](https://react-playground-tenzies.vercel.app/) | React, CSS | ✅ Completed |
 | ☑️ Todo List | [Coming Soon]() | React, LocalStorage | 🧪 Testing |
 | ➕ Counter App | [Coming Soon]() | React, useState | 🧪 Testing |
 | 💬 Quote Generator | [Coming Soon]() | React, API | 🧪 Testing |
