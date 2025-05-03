@@ -8,6 +8,7 @@ This repository is part of my larger 3-year mission to become a top 1% fullstack
 
 | 📁 Project Name | 🔗 Live Demo | 🛠️ Tech Stack | 📌 Status |📁 Folder Link |
 |----------------|--------------|----------------|------------|------------|
+| ❓ Quiz App| [View](https://assembly-endgame-theta.vercel.app/)  | React, useState, Vite, API| ✅ Completed | [`link`](./quiz-app) |
 | 💀 Assembly Endgame| [View](https://assembly-endgame-theta.vercel.app/)  | React, useState, CLSX | ✅ Completed | [`link`](./assembly-endgame) |
 | 📃 Text Utils | [View](https://front-end-projects-theta.vercel.app/) | React, JavaScript, LocalStorage, useState | ✅ Completed | [`link`](./text-utils) |
 | 🔑 Password generator | [`View`](https://password-generator-kappa-blond.vercel.app/) |  useState, useCallback, useEffect, useRef  | 🧪 Testing |[`link`](./password-generator) |

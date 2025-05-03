@@ -45,3 +45,8 @@ margin: 10px;
     background-color: #f3c5c5;
     border-color: rgb(255, 0, 0);
 }
+#input-number{
+   height: 50px;
+   font-size: 20px;
+   padding: 0 10px;
+}
