@@ -8,7 +8,7 @@ This repository is part of my larger 3-year mission to become a top 1% fullstack
 ## 🚀 Projects Showcase
 
 | 📁 Project Name | 🔗 Live Demo | 🛠️ Tech Stack | 📌 Status |📁 Folder Link |
-|----------------|--------------|----------------|------------|
+|----------------|--------------|----------------|------------|------------|
 | 🎲 Tenzies Game | [View](https://react-playground-tenzies.vercel.app/) | React, CSS | ✅ Completed |
 | 📏 Window Tracker | [View](https://react-playground-windowtracker.vercel.app/) | React, JavaScript | ✅ Completed |
 | 📃 Text Utils | [View](https://front-end-projects-theta.vercel.app/) | React, JavaScript, LocalStorage, useState | ✅ Completed |
