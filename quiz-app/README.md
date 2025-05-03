@@ -3,7 +3,7 @@
 Welcome to my Quiz App — a fun, interactive quiz game built with **React**!  
 You can choose how many questions you want, pick the difficulty level, and test your brain with real-time questions pulled from the [Open Trivia Database](https://opentdb.com/api_config.php).
 
-👉 **[Live Demo](https://your-live-demo-link.com)**
+👉 **[Live Demo](https://quiz-app-eta-navy.vercel.app/)**
 
 ---
 

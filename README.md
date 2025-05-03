@@ -8,13 +8,13 @@ This repository is part of my larger 3-year mission to become a top 1% fullstack
 
 | 📁 Project Name | 🔗 Live Demo | 🛠️ Tech Stack | 📌 Status |📁 Folder Link |
 |----------------|--------------|----------------|------------|------------|
-| ❓ Quiz App| [View](https://assembly-endgame-theta.vercel.app/)  | React, useState, Vite, API| ✅ Completed | [`link`](./quiz-app) |
+| ❓ Quiz App| [View](https://quiz-app-eta-navy.vercel.app/)  | React, useState, Vite, API| ✅ Completed | [`link`](./quiz-app) |
 | 💀 Assembly Endgame| [View](https://assembly-endgame-theta.vercel.app/)  | React, useState, CLSX | ✅ Completed | [`link`](./assembly-endgame) |
 | 📃 Text Utils | [View](https://front-end-projects-theta.vercel.app/) | React, JavaScript, LocalStorage, useState | ✅ Completed | [`link`](./text-utils) |
 | 🔑 Password generator | [`View`](https://password-generator-kappa-blond.vercel.app/) |  useState, useCallback, useEffect, useRef  | 🧪 Testing |[`link`](./password-generator) |
-| 📏 Window Tracker | [View](https://window-width.vercel.app/) | React, JavaScript, useEffect | ✅ Completed | [`link`](./window-width) |
-| 💬 Meme Generator | [`View`](https://meme-generator-smoky-phi.vercel.app/) | React, API, Forms, Conditional | ✅ Completed | [`link`](./meme-generator) |
 | 🎲 Tenzies Game | [View](https://tenzies-game-steel.vercel.app/) | React, CSS, useState, useEffect, useRef | ✅ Completed | [`link`](./tenzies-game) |
+| 💬 Meme Generator | [`View`](https://meme-generator-smoky-phi.vercel.app/) | React, API, Forms, Conditional | ✅ Completed | [`link`](./meme-generator) |
+| 📏 Window Tracker | [View](https://window-width.vercel.app/) | React, JavaScript, useEffect | ✅ Completed | [`link`](./window-width) |
 | ☑️ React-Static | [`View`](https://react-static-lovat.vercel.app/) | React, JavaScript, CSS, JSX | ✅ Completed | [`link`](./react-static) | 
 
 _(This table will grow daily as I push more mini-projects here.)_
