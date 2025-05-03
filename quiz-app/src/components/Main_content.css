@@ -1,0 +1,47 @@
+.main{
+    display: flex;
+flex-direction: column;
+margin: 10px;
+}
+.main p{
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 15px 0;
+}
+
+.main ul li{
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding-left: 15px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.main button{
+    margin: auto;
+    width: 250px;
+    height: 65px;
+    background: #553f9a;
+    color: white;
+    font-size: 25px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.main .index{
+    margin: 10px auto;
+}
+
+.main .correct{
+    background-color: #dffff2;
+    border-color: rgb(0, 255, 0);
+}
+.main .inCorrect{
+    background-color: #f3c5c5;
+    border-color: rgb(255, 0, 0);
+}

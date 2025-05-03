@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: linear-gradient(#D8C7FF, #19006C);    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "poppins";
+}
+#root{
+    min-height: 500px;
+    width: 540px;
+background-color: white;
+border-radius: 10px;
+padding-inline:  20px;
+
+}
+.header h1{
+    font-size: 25px;
+    margin-block: 30px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header hr{
+    height: 2px;
+    border: none;
+    background-color: black;
+}
+
