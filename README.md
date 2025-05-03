@@ -9,7 +9,7 @@ This repository is part of my larger 3-year mission to become a top 1% fullstack
 
 | 📁 Project Name | 🔗 Live Demo | 🛠️ Tech Stack | 📌 Status |📁 Folder Link |
 |----------------|--------------|----------------|------------|------------|
-| 📃 Text Utils | [View](https://front-end-projects-theta.vercel.app/) | React, JavaScript, LocalStorage, useState | ✅ Completed | (link)[./text-utils] |
+| 📃 Text Utils | [View](https://front-end-projects-theta.vercel.app/) | React, JavaScript, LocalStorage, useState | ✅ Completed | [`link`](./text-utils) |
 | 💀 Assembly Endgame| [View](https://assembly-endgame-theta.vercel.app/)  | React, useState, CLSX | 🚧 In Progress |
 | 📏 Window Tracker | [View](https://react-playground-windowtracker.vercel.app/) | React, JavaScript | ✅ Completed |
 | 🎲 Tenzies Game | [View](https://react-playground-tenzies.vercel.app/) | React, CSS | ✅ Completed |
