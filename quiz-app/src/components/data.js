@@ -15,9 +15,27 @@ const data =  [
         option2: "Hello",
         option3: "Hello",
         option4: "Hello",
+        ans: 2
+    },
+      {
+        question:
+        "In programming, the ternary operator is mostly defined with what symbol(s)?",
+        option1: "Hello",
+        option2: "Hello",
+        option3: "Hello",
+        option4: "Hello",
         ans: 3
     },
-  ]
+      {
+        question:
+        "In programming, the ternary operator is mostly defined with what symbol(s)?",
+        option1: "Hello",
+        option2: "Hello",
+        option3: "Hello",
+        option4: "Hello",
+        ans: 4
+    },
+    ]
 
 
 export default data;
