@@ -1,10 +1,19 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import React,{useState} from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { NoteContext } from "./NoteContext";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+function NoteProvider(){
+    const [noteContainer, setNoteContainer] = useState([]);
+    return(
+    <NoteContext.Provider value={{ noteContainer, setNoteContainer }}>
     <App />
-  </StrictMode>,
-)
+  </NoteContext.Provider>
+  );
+}
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+    <NoteProvider/>
+        // <App />
+
+);

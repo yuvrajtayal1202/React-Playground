@@ -1,0 +1,58 @@
+ 
+import React from "react";
+import { NoteContext } from '../NoteContext';
+
+const Home = () => {
+  const [note, setNote] = React.useState({});
+  const [count, setCount] = React.useState(1);
+  const { setNoteContainer } = React.useContext(NoteContext);
+
+  function handleSubmit(e) {
+      if (!note.note_title || !note.note  || note.note_title.trim() == 0 || note.note.trim() == 0 ) {
+    alert("Please fill Valid Details in both fields!");
+    return;
+  }
+    e.preventDefault();
+    setNoteContainer(prevNotes => [...prevNotes, note]);
+    setNote({})
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setNote((values) => ({
+      ...values,
+      [name]: value,
+      "id": count
+    }));
+
+    setCount(prevCount => prevCount + 1)
+    
+  }
+
+  return (
+    <>
+      <main className="home-main">
+        <h1>📓Notes</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="note_title"
+            value={note.note_title || ""}
+            onChange={handleChange}
+            placeholder="Enter Note Title "
+          />
+          <textarea
+            name="note"
+            id="note"
+            value={note.note || ""}
+            onChange={handleChange}
+            placeholder="Enter note here..."
+          ></textarea>
+          <button>Take Note✏️</button>
+        </form>
+      </main>
+    </>
+  );
+};
+
+export default Home;

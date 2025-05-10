@@ -1,68 +1,214 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.main-content{
+    margin: 50px  260px;
+    width: 75vw;
 }
 
-body {
+.header{
+    background-color: black;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px ;
+}
+
+.header-name h2{ 
+    color: white;
+    font-size: 29px;
+
+}
+
+.header-links{
+    display: flex;
+    gap: 2rem;
+}
+.header-links a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+.header a:hover{
+    text-decoration: underline;
+    color: #919191;
+}
+
+
+.home-main{
+    /* border: 2px solid black; */
+        width: 769px;
+    margin: 10px 50px;
+
+}
+.home-main form{
+display: flex;
+flex-direction: column;
+}
+.home-main form input{
+    box-sizing: border-box;
+    width: 50%;
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 20px ;
+    padding: 20px;
+    font-size: 20px;
+}
+.home-main form textarea{
+    box-sizing: border-box;
+    margin-top: 20px;
+    border-radius: 20px ;
+    padding: 20px;
+    font-size: 20px;
+        width: 100%;
+    height: 209px;
+}
+
+.home-main form button{
+    box-sizing: border-box;
+    margin-top: 20px;
+    border-radius: 2px ;
+    /* padding: 20px; */
+    font-size: 20px;
+        width: 769px;
+    height: 50px;
+    cursor: pointer;
+    /* border: ; */
+    background-color: #000000;
+    color: white;
+}
+
+.footer{
+    background-color: #000000;
+    color: #fff;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 1.3rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+
+
+
+/* ***************** Side bar code*/
+
+.sidebar-main{
+  width: 200px;
+  background-color: #c7c7c7;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}                
+.sidebar-main h2{
+    margin: 10px 10px ;
+}
+.sidebar-main ul{
+    display: flex;
+    flex-direction: column;
+    /* padding: 5px 20px ; */
+    text-align: left;
+    gap: 7px;
+}
+
+.sidebar-main .sidebar-li{
+    list-style: none;
+  font-size: 25px;
+  /* background-color: #838383; */
+  color: #000000;
+  text-decoration: none;
+  padding: 3px 20px;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  border-radius: 4px;
+  /* width: 60%; */
+  /* margin: auto; */
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.sidebar-main .sidebar-li:hover{
+background-color: #afafaf;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+
+
+
+/* Notes Paghe */
+.notes-main{
+    /* border: 2px solid; */
+    width: 100%;
+}
+.notes-main h1{
+    margin-bottom: 20px;
+}
+.notes-main  a{
+    text-decoration: none;
+    color: #000000;
+}
+.note_container_element_con{
+display: flex;
+justify-content: start;
+flex-wrap: wrap;
+
+}
+.notes-page-note-con{
+     border: 3px solid;
+    background-color: rgb(243, 240, 240);
+    width: 300px;
+    height: 200px;
+    margin: 0 20px;
+}
+.notes-page-note-h{
+    background-color: rgb(221, 221, 221);
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+
+
+/* About paGE  */
+
+.about-page {
+  max-width: 800px;
+  font-family: Arial, sans-serif;
+  border-radius: 8px;
+}
+
+.about-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.about-page h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #444;
+}
+
+.about-page p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.about-page ul {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+  color: #333;
+}
+
+.about-page li {
+  margin-bottom: 0.5rem;
 }
