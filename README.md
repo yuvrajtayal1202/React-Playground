@@ -8,6 +8,7 @@ This repository is part of my larger 3-year mission to become a top 1% fullstack
 
 | 📁 Project Name | 🔗 Live Demo | 🛠️ Tech Stack | 📌 Status |📁 Folder Link |
 |----------------|--------------|----------------|------------|------------|
+| ❓ NotesNest| [View](https://notesnest-six.vercel.app/)  | React, CRUD, Router, Authentication| ✅ Completed | [`link`](./NotesNest/) |
 | ❓ Quiz App| [View](https://quiz-app-eta-navy.vercel.app/)  | React, useState, Vite, API| ✅ Completed | [`link`](./quiz-app) |
 | 💀 Assembly Endgame| [View](https://assembly-endgame-theta.vercel.app/)  | React, useState, CLSX | ✅ Completed | [`link`](./assembly-endgame) |
 | 📃 Text Utils | [View](https://front-end-projects-theta.vercel.app/) | React, JavaScript, LocalStorage, useState | ✅ Completed | [`link`](./text-utils) |
