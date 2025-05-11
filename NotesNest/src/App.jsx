@@ -16,7 +16,7 @@ import Notes from "./pages/Notes/Notes";
 import NotesDetail from "./pages/Notes/NotesDetail";
 
 const App = () => {
-
+    
   const route = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout/>}>
@@ -28,6 +28,8 @@ const App = () => {
       </Route>
     )
   );
+
+
   return (
     <div>
       <RouterProvider router={route} />

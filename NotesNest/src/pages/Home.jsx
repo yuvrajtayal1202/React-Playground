@@ -5,7 +5,7 @@ import { NoteContext } from '../NoteContext';
 const Home = () => {
   const [note, setNote] = React.useState({});
   const [count, setCount] = React.useState(1);
-  const { setNoteContainer } = React.useContext(NoteContext);
+  const { setNoteContainer, noteContainer } = React.useContext(NoteContext);
 
   function handleSubmit(e) {
       if (!note.note_title || !note.note  || note.note_title.trim() == 0 || note.note.trim() == 0 ) {
@@ -16,13 +16,20 @@ const Home = () => {
     setNoteContainer(prevNotes => [...prevNotes, note]);
     setNote({})
   }
+  React.useEffect(()=>{
+
+    localStorage.setItem("notes", JSON.stringify(noteContainer));
+  },[noteContainer])
+
 
   function handleChange(event) {
     const { name, value } = event.target;
     setNote((values) => ({
       ...values,
       [name]: value,
-      "id": count
+      "id": Date.now(),
+      "date": new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' }),
+     "time": new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true })
     }));
 
     setCount(prevCount => prevCount + 1)

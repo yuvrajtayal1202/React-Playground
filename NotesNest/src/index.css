@@ -7,15 +7,23 @@
 .main-content{
     margin: 50px  260px;
     width: 75vw;
+    /* border: 2px solid; */
 }
 
 .header{
     background-color: black;
-    height: 60px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px ;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    /* margin-bottom: 20px; */
+    overflow: hidden;
+    z-index: 1000;
 }
 
 .header-name h2{ 
@@ -42,7 +50,7 @@
 .home-main{
     /* border: 2px solid black; */
         width: 769px;
-    margin: 10px 50px;
+    margin: 10px auto;
 
 }
 .home-main form{
@@ -88,12 +96,6 @@ flex-direction: column;
     padding: 8px 0;
     text-align: center;
     font-size: 1.3rem;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    height: 40px;
-    box-sizing: border-box;
 }
 
 
@@ -103,7 +105,6 @@ flex-direction: column;
 
 .sidebar-main{
   width: 200px;
-  background-color: #c7c7c7;
   position: fixed;
   height: 100%;
   overflow: auto;
@@ -122,20 +123,27 @@ flex-direction: column;
 .sidebar-main .sidebar-li{
     list-style: none;
   font-size: 25px;
-  /* background-color: #838383; */
   color: #000000;
   text-decoration: none;
   padding: 3px 20px;
   margin: 0;
   cursor: pointer;
-  border-radius: 4px;
-  /* width: 60%; */
-  /* margin: auto; */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
 }
 .sidebar-main .sidebar-li:hover{
-background-color: #afafaf;
+background-color: #d4d4d4;
 }
+.sidebar-main li span{
+    margin: 0 2px;
+    padding: 10px;
+    border-radius: 20px;
+}
+.sidebar-main li span:hover{
+    background-color: #d4d4d4;
 
+}
 
 
 
@@ -163,6 +171,7 @@ flex-wrap: wrap;
     width: 300px;
     height: 200px;
     margin: 0 20px;
+    position: relative;
 }
 .notes-page-note-h{
     background-color: rgb(221, 221, 221);
@@ -173,7 +182,14 @@ flex-wrap: wrap;
 
 }
 
-
+.notes-page-note-date-time-con{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.notes-page-note-date-time-con span{
+    margin: 5px ;
+}
 
 
 
