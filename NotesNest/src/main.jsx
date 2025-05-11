@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { NoteContext } from "./NoteContext";
+import { AuthProvider } from "./AuthContext";
 
 function NoteProvider(){
     React.useEffect(() => {
@@ -20,7 +21,11 @@ function NoteProvider(){
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+    <AuthProvider>
+
     <NoteProvider/>
+      </AuthProvider>
+
         // <App />
 
 );

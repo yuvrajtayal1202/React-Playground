@@ -1,13 +1,21 @@
  
 import React from "react";
 import { NoteContext } from '../NoteContext';
-
+import { useAuth } from "./../AuthContext";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "./../firebase";
 const Home = () => {
+    const { user } = useAuth();
+
   const [note, setNote] = React.useState({});
   const [count, setCount] = React.useState(1);
   const { setNoteContainer, noteContainer } = React.useContext(NoteContext);
 
   function handleSubmit(e) {
+        if (!user) {
+      navigate("login");
+      return;
+        }
       if (!note.note_title || !note.note  || note.note_title.trim() == 0 || note.note.trim() == 0 ) {
     alert("Please fill Valid Details in both fields!");
     return;

@@ -1,10 +1,22 @@
 import React from "react";
 import { NoteContext } from "../../NoteContext";
 import { Link } from "react-router-dom";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../firebase";
+import { useAuth } from "../../AuthContext";
 
+const fetchNotes = async () => {
+  const { user } = useAuth();
+  if (!user) return [];
+
+  const q = query(collection(db, "notes"), where("uid", "==", user.uid));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+}; 
 const Notes = () => {
+  fetchNotes()
   const { noteContainer, setNoteContainer } = React.useContext(NoteContext);
-  
+
   const deleteNote = (idToDelete) => {
   const updatedNotes = noteContainer.filter(note => note.id !== idToDelete);
   setNoteContainer(updatedNotes);
