@@ -1,48 +1,53 @@
- 
 import React from "react";
 import { NoteContext } from '../NoteContext';
-import { useAuth } from "./../AuthContext";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "./../firebase";
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 const Home = () => {
-    const { user } = useAuth();
-
+  const { user } = useAuth();
   const [note, setNote] = React.useState({});
-  const [count, setCount] = React.useState(1);
-  const { setNoteContainer, noteContainer } = React.useContext(NoteContext);
+  const { setNoteContainer } = React.useContext(NoteContext);
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
-        if (!user) {
-      navigate("login");
-      return;
-        }
-      if (!note.note_title || !note.note  || note.note_title.trim() == 0 || note.note.trim() == 0 ) {
-    alert("Please fill Valid Details in both fields!");
-    return;
-  }
     e.preventDefault();
-    setNoteContainer(prevNotes => [...prevNotes, note]);
-    setNote({})
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+    if (!note.note_title || !note.note) {
+      alert("Please fill in both fields!");
+      return;
+    }
+    addDoc(collection(db, "notes"), {
+      ...note,
+      uid: user.uid,
+      email: user.email,
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString()
+    }).then(() => {
+      setNote({});
+    }).catch((err) => {
+      alert("Error saving note: " + err.message);
+    });
   }
-  React.useEffect(()=>{
-
-    localStorage.setItem("notes", JSON.stringify(noteContainer));
-  },[noteContainer])
-
 
   function handleChange(event) {
     const { name, value } = event.target;
     setNote((values) => ({
       ...values,
       [name]: value,
-      "id": Date.now(),
       "date": new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' }),
-     "time": new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true })
+      "time": new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true })
     }));
-
-    setCount(prevCount => prevCount + 1)
-    
   }
+
+  React.useEffect(() => {
+    if (!user) {
+      setNote({});
+    }
+  }, [user]);
 
   return (
     <>

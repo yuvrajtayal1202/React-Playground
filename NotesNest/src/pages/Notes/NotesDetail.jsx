@@ -1,23 +1,28 @@
 import React from 'react'
 import { useParams, useLocation, Link, useNavigate } from "react-router-dom"
-import { NoteContext } from '../../NoteContext';
+import { db } from '../../firebase';
+import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { useAuth } from "../../AuthContext";
 
 const NotesDetail = () => {
   const [currentNote, setCurrentNote] = React.useState(null)
   const [isEditing, setIsEditing] = React.useState(false)
-  const { setNoteContainer, noteContainer } = React.useContext(NoteContext);
-    const navigate = useNavigate();
-  
+  const { user } = useAuth();
+  const navigate = useNavigate();
   let params = useParams()
   const location = useLocation();
 
   React.useEffect(() => {
-    const stored_notes = JSON.parse(localStorage.getItem("notes"));
-    if (stored_notes) {
-      const found = stored_notes.find(notesobj => notesobj.id == params.id)
-      setCurrentNote(found || null)
-    }
-  }, [params.id, noteContainer])
+    if (!user) return;
+    const fetchNote = async () => {
+      const docRef = doc(db, "notes", params.id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setCurrentNote({ id: docSnap.id, ...docSnap.data() });
+      }
+    };
+    fetchNote();
+  }, [params.id, user]);
 
   React.useEffect(() => {
     if (location.state && location.state.edit) {
@@ -33,30 +38,30 @@ const NotesDetail = () => {
     }));
   };
 
-  const handleSave = () => {
-    const updatedNotes = noteContainer.map(note =>
-      note.id == currentNote.id ? currentNote : note
-    );
-    setNoteContainer(updatedNotes);
-    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+  const handleSave = async () => {
+    await updateDoc(doc(db, "notes", currentNote.id), {
+      note_title: currentNote.note_title,
+      note: currentNote.note,
+    });
     setIsEditing(false);
   };
 
-  if (!currentNote){
-    return(
-      <>
-    <div>Note not found</div>
-    <Link to="../notes">See All Notes</Link>
-      </>
-  )
-  };
-  const deleteNote = (idToDelete) => {
-  const updatedNotes = noteContainer.filter(note => note.id !== idToDelete);
-  setNoteContainer(updatedNotes);
-  localStorage.setItem("notes", JSON.stringify(updatedNotes));
+  const deleteNote = async (idToDelete) => {
+    if (window.confirm("Delete this note?")) {
+      await deleteDoc(doc(db, "notes", idToDelete));
       navigate(`../notes`);
+    }
+  };
 
-};
+  if (!currentNote) {
+    return (
+      <>
+        <div>Note not found</div>
+        <Link to="../notes">See All Notes</Link>
+      </>
+    )
+  };
+
   return (
     <div>
       <h2>Note Detail</h2>
@@ -74,19 +79,19 @@ const NotesDetail = () => {
             onChange={handleChange}
           />
           <button onClick={handleSave}>Save</button>
+          <button onClick={() => setIsEditing(false)} style={{ marginLeft: "1rem" }}>Cancel</button>
           <p>{currentNote.date}</p>
           <p>{currentNote.time}</p>
         </div>
       ) : (
         <div>
-              <Link to="../notes">See All Notes</Link>
+          <Link to="../notes">See All Notes</Link>
           <h2>{currentNote.note_title}</h2>
           <p>{currentNote.note}</p>
           <p>{currentNote.date}</p>
           <p>{currentNote.time}</p>
           <button onClick={() => setIsEditing(true)}>Edit</button>
-                      <button onClick={() => deleteNote(currentNote.id)}>Delete</button>
-
+          <button onClick={() => deleteNote(currentNote.id)} style={{ marginLeft: "1rem", color: "red" }}>Delete</button>
         </div>
       )}
     </div>

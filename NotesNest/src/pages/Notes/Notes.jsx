@@ -1,37 +1,78 @@
 import React from "react";
 import { NoteContext } from "../../NoteContext";
-import { Link } from "react-router-dom";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebase";
+import {
+  collection,
+  query,
+  where,
+  onSnapshot,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import { useAuth } from "../../AuthContext";
 
-const fetchNotes = async () => {
-  const { user } = useAuth();
-  if (!user) return [];
-
-  const q = query(collection(db, "notes"), where("uid", "==", user.uid));
-  const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-}; 
 const Notes = () => {
-  fetchNotes()
   const { noteContainer, setNoteContainer } = React.useContext(NoteContext);
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
-  const deleteNote = (idToDelete) => {
-  const updatedNotes = noteContainer.filter(note => note.id !== idToDelete);
-  setNoteContainer(updatedNotes);
-  localStorage.setItem("notes", JSON.stringify(updatedNotes));
-};
+  // Real-time Firestore sync for logged-in user, clear notes on logout
+  React.useEffect(() => {
+    if (!user) {
+      setNoteContainer([]);
+      return;
+    }
+    const q = query(collection(db, "notes"), where("uid", "==", user.uid));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      setNoteContainer(
+        querySnapshot.docs
+          .map((docSnap) => ({
+            id: docSnap.id,
+            ...docSnap.data(),
+          }))
+          .filter(
+            (note) => typeof note.id === "string" && note.id.length === 20
+          )
+      );
+    });
+    return () => unsubscribe();
+  }, [user, setNoteContainer]);
 
+  const deleteNote = async (idToDelete) => {
+    if (typeof idToDelete !== "string" || idToDelete.length !== 20) {
+      console.error("Note id is not a valid Firestore string:", idToDelete);
+      return;
+    }
+    try {
+      await deleteDoc(doc(db, "notes", idToDelete));
+    } catch (err) {
+      console.error("Failed to delete note:", err);
+    }
+  };
+
+  const editNote = (id) => {
+    navigate(`/notes/${id}`, { state: { edit: true } });
+  };
 
   const noteContainer_els =
     noteContainer && noteContainer.length > 0 ? (
       <>
         {noteContainer.map((note, idx) => (
-          <div key={idx} className="notes-page-note-con">
+          <div key={note.id} className="notes-page-note-con">
             <h3 className="notes-page-note-h">{note.note_title}</h3>
-            <p className="notes-page-note-p">{note.note}</p>
-            <button onClick={() => deleteNote(note.id)}>Delete</button>
+            <p className="notes-page-note-p">
+              {note.note.length > 200
+                ? note.note.slice(0, 200) + "..."
+                : note.note}
+            </p>
+            <button onClick={() => editNote(note.id)}>Edit</button>
+            <button
+              onClick={() => deleteNote(note.id)}
+              style={{ marginLeft: "1rem", color: "red" }}
+            >
+              Delete
+            </button>
             <Link to={`${note.id}`}>View</Link>
             <div className="notes-page-note-date-time-con">
               <span>{note.date}</span>
