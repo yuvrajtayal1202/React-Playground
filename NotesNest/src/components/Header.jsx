@@ -19,9 +19,10 @@ const Header = () => {
   useEffect(() => {
     const fetchName = async () => {
       if (user) {
+        // Try Firestore first
         const userDoc = await getDoc(doc(db, "users", user.uid));
         if (userDoc.exists()) {
-          setUserName(userDoc.data().name || "");
+          setUserName(userDoc.data().name || user.displayName || "");
         } else if (user.displayName) {
           setUserName(user.displayName);
         } else {
@@ -64,7 +65,6 @@ const Header = () => {
         ) : (
           <NavLink
             onClick={handleLogout}
-            // style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             Logout
           </NavLink>

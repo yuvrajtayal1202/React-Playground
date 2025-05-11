@@ -10,28 +10,30 @@ const Home = () => {
   const { setNoteContainer } = React.useContext(NoteContext);
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!user) {
-      navigate("/login");
-      return;
-    }
-    if (!note.note_title || !note.note) {
-      alert("Please fill in both fields!");
-      return;
-    }
-    addDoc(collection(db, "notes"), {
-      ...note,
-      uid: user.uid,
-      email: user.email,
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString()
-    }).then(() => {
-      setNote({});
-    }).catch((err) => {
-      alert("Error saving note: " + err.message);
-    });
+ function handleSubmit(e) {
+  e.preventDefault();
+  if (!user) {
+    // Save note to localStorage before redirect
+    localStorage.setItem("pendingNote", JSON.stringify(note));
+    navigate("/login");
+    return;
   }
+  if (!note.note_title || !note.note) {
+    alert("Please fill in both fields!");
+    return;
+  }
+  addDoc(collection(db, "notes"), {
+    ...note,
+    uid: user.uid,
+    email: user.email,
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString()
+  }).then(() => {
+    setNote({});
+  }).catch((err) => {
+    alert("Error saving note: " + err.message);
+  });
+}
 
   function handleChange(event) {
     const { name, value } = event.target;

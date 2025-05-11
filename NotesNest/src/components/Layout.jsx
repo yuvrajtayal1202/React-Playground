@@ -3,8 +3,10 @@ import Header from './Header'
 import Footer from './Footer'
 import Sidebar from './Sidebar'
 import { Outlet } from "react-router-dom"
+import { useAuth } from "../AuthContext";
 
 const Layout = () => {
+  const { user } = useAuth();
   const [sidebarWidth, setSidebarWidth] = React.useState(300);
 
   return (
@@ -14,11 +16,11 @@ const Layout = () => {
       <div
         className="main-content"
         style={{
-          marginLeft: sidebarWidth +50, // <-- This keeps content out from behind the sidebar
+          marginLeft: sidebarWidth + 50,
           transition: "margin-left 0.1s"
         }}
       >
-        <Outlet />
+        <Outlet key={user?.uid || "guest"} />
       </div>
       {/* <Footer/> */}
     </div>

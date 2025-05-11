@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, collection, addDoc } from "firebase/firestore";
 import { useAuth } from "../AuthContext";
 
 export default function Login() {
@@ -18,51 +18,78 @@ export default function Login() {
   const [isSignup, setIsSignup] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
-const { user, refreshUser } = useAuth(); // <-- add refreshUser
+  const { setUser, refreshUser } = useAuth();
+
+  // Helper to save pending note after login/signup
+  const savePendingNote = async (user) => {
+    const pending = localStorage.getItem("pendingNote");
+    if (pending) {
+      try {
+        const note = JSON.parse(pending);
+        if (note.note_title && note.note) {
+          await addDoc(collection(db, "notes"), {
+            ...note,
+            uid: user.uid,
+            email: user.email,
+            date: new Date().toLocaleDateString(),
+            time: new Date().toLocaleTimeString(),
+          });
+        }
+      } catch (e) {
+        // Optionally handle error
+      }
+      localStorage.removeItem("pendingNote");
+    }
+  };
 
   // Email/Password Login
   const login = async () => {
     setErrorMsg("");
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/"); // Redirect to home after login
+      await refreshUser();
+      await savePendingNote(auth.currentUser);
+      window.location.replace("/");
     } catch (error) {
       setErrorMsg(error.message);
     }
   };
 
-  // Email/Password Signup with name
-const signup = async () => {
-  setErrorMsg("");
-  try {
-    if (!email || !password || !name) {
-      setErrorMsg("All fields are required.");
-      return;
+  const signup = async () => {
+    setErrorMsg("");
+    try {
+      if (!email || !password || !name) {
+        setErrorMsg("All fields are required.");
+        return;
+      }
+      if (password.length < 6) {
+        setErrorMsg("Password must be at least 6 characters.");
+        return;
+      }
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await updateProfile(userCredential.user, { displayName: name });
+      await setDoc(doc(db, "users", userCredential.user.uid), {
+        name,
+        email,
+        uid: userCredential.user.uid,
+      });
+      setUser({ ...userCredential.user, displayName: name });
+      await savePendingNote(userCredential.user);
+      window.location.replace("/");
+    } catch (error) {
+      setErrorMsg(error.message);
     }
-    if (password.length < 6) {
-      setErrorMsg("Password must be at least 6 characters.");
-      return;
-    }
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    await updateProfile(userCredential.user, { displayName: name });
-    await setDoc(doc(db, "users", userCredential.user.uid), {
-      name,
-      email,
-      uid: userCredential.user.uid,
-    });
-    await refreshUser();
-    window.location.replace("/"); // <-- Force reload and redirect to home
-  } catch (error) {
-    setErrorMsg(error.message);
-  }
-};
+  };
 
   // Google Sign-In
   const googleLogin = async () => {
     setErrorMsg("");
     try {
       const result = await signInWithPopup(auth, provider);
-      // Save name to Firestore if not already present
       await setDoc(
         doc(db, "users", result.user.uid),
         {
@@ -72,7 +99,9 @@ const signup = async () => {
         },
         { merge: true }
       );
-      navigate("/"); // Redirect to home after Google login
+      await refreshUser();
+      await savePendingNote(auth.currentUser);
+      window.location.replace("/");
     } catch (error) {
       setErrorMsg(error.message);
     }
@@ -89,7 +118,7 @@ const signup = async () => {
           type="text"
           placeholder="Name"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           style={{ display: "block", margin: "1rem 0", width: "100%" }}
         />
       )}
@@ -97,25 +126,29 @@ const signup = async () => {
         type="email"
         placeholder="Email"
         value={email}
-        onChange={e => setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
         style={{ display: "block", margin: "1rem 0", width: "100%" }}
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
-        onChange={e => setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
         style={{ display: "block", margin: "1rem 0", width: "100%" }}
       />
 
       {!isSignup ? (
         <>
-          <button onClick={login} style={{ marginRight: "1rem" }}>Login</button>
+          <button onClick={login} style={{ marginRight: "1rem" }}>
+            Login
+          </button>
           <button onClick={() => setIsSignup(true)}>Sign Up</button>
         </>
       ) : (
         <>
-          <button onClick={signup} style={{ marginRight: "1rem" }}>Sign Up</button>
+          <button onClick={signup} style={{ marginRight: "1rem" }}>
+            Sign Up
+          </button>
           <button onClick={() => setIsSignup(false)}>Back to Login</button>
         </>
       )}

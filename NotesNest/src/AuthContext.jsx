@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => signOut(auth);
 
-  // Add this function:
   const refreshUser = async () => {
     if (auth.currentUser) {
       await auth.currentUser.reload();
@@ -23,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, logout, refreshUser }}>
+    <AuthContext.Provider value={{ user, setUser, logout, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );
