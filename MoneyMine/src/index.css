@@ -1,68 +1,117 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
   margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  background-color: black;
+  height: 70px;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  /* margin-bottom: 20px; */
+  overflow: hidden;
+  z-index: 1000;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.header-name a {
+  color: white;
+  font-size: 29px;
+  text-decoration: none;
 }
 
-button {
+.header-links {
+  display: flex;
+  gap: 2rem;
+}
+.header-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+.header a:hover {
+  text-decoration: underline;
+  color: #919191;
+}
+
+.about-page {
+  /* max-width: 800px; */
+  font-family: Arial, sans-serif;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.about-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
 }
+
+.about-page h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #444;
+}
+
+.about-page p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.about-page ul {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+  color: #333;
+}
+
+.about-page li {
+  margin-bottom: 0.5rem;
+}
+
+/* side barrr  */
+
+.SideBarNav {
+  background: #1b1616;
+  width: 350px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+ right: 0;
+  transition: 350ms;
+  z-index: 10;
+}
+.SideBarLabel{
+  margin-top: 100px;
+    color: #e1e9fc;
+      font-size: 18px;
+
+
+}
+.SidebarLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  list-style: none;
+  height: 60px;
+  text-decoration: none;
+}
+
+.sideBarLower{
+  position: absolute;
+  bottom: 80px;
+  left: 20px;
+  font-size: 25px;
+}
+
+
